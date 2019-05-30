@@ -97,6 +97,7 @@
     <Compile Include="ComponentType.cs" />
     <Compile Include="FirewallHelper.cs" />
     <Compile Include="FirewallHelperException.cs" />
+    <Compile Include="InstallationHelper.cs" />
     <Compile Include="SystemInteractions.cs" />
     <Compile Include="WebInteractionsResultType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

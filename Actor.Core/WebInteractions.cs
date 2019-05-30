@@ -95,6 +95,8 @@ namespace Actor.Core
                 .Subscribe(x => onProgress?.Invoke(x));
             // ReSharper restore AccessToDisposedClosure
 
+            webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
+
             var downloadTask = webClient.DownloadFileTaskAsync(uriFrom, to);
             downloadTask.Wait();
 
@@ -108,6 +110,11 @@ namespace Actor.Core
             webClient.Dispose();
 
             return new WebInteractionsBundle(resultType, new FileInfo(to));
+        }
+
+        private void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            
         }
 
         /// <summary>
