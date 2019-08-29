@@ -62,7 +62,7 @@ namespace Actor.Core
                 if (from.EndsWith("localstorage"))
                 {
                     var wi = new WebInteractions();
-                    wi.Download(from, to);
+                    wi.DownloadAsync(from, to);
                     return;
                 }
 

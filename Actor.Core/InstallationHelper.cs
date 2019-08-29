@@ -31,7 +31,8 @@ namespace Actor.Core
                     UpdatePluginConfiguration(component, UpdatePluginInstallPath(component, installTo));
                 return;
             }
-
+            if (!Directory.Exists(downloadTo))
+                Directory.CreateDirectory(downloadTo);
             var downloadToFullPath = Path.Combine(downloadTo, component.FileName);
             var parsingText = $"##### Parsing latest github api for {component.Name}...";
             var downloadingText = $"##### Downloading {component.Name} -> ";
@@ -48,7 +49,7 @@ namespace Actor.Core
                 downloadFrom = webInteractions.ParseAssetFromGitHub(downloadFrom, int.Parse(installArguments), () => txtConsole.Text = $"{parsingText}{Environment.NewLine}{txtConsole.Text}");
             }
 
-            var bundle = webInteractions.Download(downloadFrom, downloadToFullPath, () => txtConsole.Text = $"{downloadingText}{Environment.NewLine}{txtConsole.Text}", DownloadProgress(downloadingText), DownloadComplete());
+            var bundle = webInteractions.DownloadAsync(downloadFrom, downloadToFullPath, () => txtConsole.Text = $"{downloadingText}{Environment.NewLine}{txtConsole.Text}", DownloadProgress(downloadingText), DownloadComplete());
             if (bundle.Result == WebInteractionsResultType.Fail)
             {
                 txtConsole.Text = $"{Environment.NewLine}There was an error while downloading {component.Name}.{Environment.NewLine}{txtConsole.Text}";
@@ -90,7 +91,7 @@ namespace Actor.Core
 
         private static Action DownloadComplete()
         {
-            return () => txtConsole.Text = $"{Environment.NewLine}{txtConsole.Text}";
+            return () => txtConsole.Text = $"Download complete.{Environment.NewLine}{txtConsole.Text}";
         }
 
         private static Action<System.Net.DownloadProgressChangedEventArgs> DownloadProgress(string downloadingText)

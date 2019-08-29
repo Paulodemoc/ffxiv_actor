@@ -1,6 +1,6 @@
 ﻿namespace ActorGUI
 {
-    partial class ActorGUI
+    partial class ActorGUIForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActorGUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActorGUIForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlSelectedMenu = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPrerequisites = new System.Windows.Forms.Button();
+            this.btnACT = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.ucAdvancedCombatTracker1 = new UCAdvancedCombatTracker();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -48,14 +48,22 @@
             this.pnlMenu.BackColor = System.Drawing.Color.Black;
             this.pnlMenu.Controls.Add(this.panel1);
             this.pnlMenu.Controls.Add(this.pnlSelectedMenu);
-            this.pnlMenu.Controls.Add(this.button2);
-            this.pnlMenu.Controls.Add(this.button1);
+            this.pnlMenu.Controls.Add(this.btnPrerequisites);
+            this.pnlMenu.Controls.Add(this.btnACT);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(237, 599);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DimGray;
+            this.panel1.Location = new System.Drawing.Point(232, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 599);
+            this.panel1.TabIndex = 3;
             // 
             // pnlSelectedMenu
             // 
@@ -65,44 +73,42 @@
             this.pnlSelectedMenu.Size = new System.Drawing.Size(16, 52);
             this.pnlSelectedMenu.TabIndex = 2;
             // 
-            // button2
+            // btnPrerequisites
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::ActorGUI.Properties.Resources.plugin32;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 60);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(237, 52);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Prerequisites";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.BtnComponent_Click);
+            this.btnPrerequisites.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnPrerequisites.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnPrerequisites.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnPrerequisites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrerequisites.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btnPrerequisites.ForeColor = System.Drawing.Color.White;
+            this.btnPrerequisites.Image = global::ActorGUI.Properties.Resources.plugin32;
+            this.btnPrerequisites.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrerequisites.Location = new System.Drawing.Point(0, 60);
+            this.btnPrerequisites.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrerequisites.Name = "btnPrerequisites";
+            this.btnPrerequisites.Size = new System.Drawing.Size(237, 52);
+            this.btnPrerequisites.TabIndex = 1;
+            this.btnPrerequisites.Text = "Prerequisites";
+            this.btnPrerequisites.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnACT
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::ActorGUI.Properties.Resources.act32;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(237, 52);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ACT";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.BtnComponent_Click);
+            this.btnACT.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnACT.FlatAppearance.BorderSize = 0;
+            this.btnACT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnACT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnACT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btnACT.ForeColor = System.Drawing.Color.White;
+            this.btnACT.Image = global::ActorGUI.Properties.Resources.act32;
+            this.btnACT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnACT.Location = new System.Drawing.Point(0, 0);
+            this.btnACT.Margin = new System.Windows.Forms.Padding(4);
+            this.btnACT.Name = "btnACT";
+            this.btnACT.Size = new System.Drawing.Size(237, 52);
+            this.btnACT.TabIndex = 0;
+            this.btnACT.Text = "ACT";
+            this.btnACT.UseVisualStyleBackColor = true;
             // 
             // pnlContent
             // 
@@ -120,7 +126,6 @@
             // 
             this.txtConsole.BackColor = System.Drawing.Color.Black;
             this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtConsole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtConsole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtConsole.Location = new System.Drawing.Point(0, 232);
             this.txtConsole.Multiline = true;
@@ -146,20 +151,10 @@
             // ucAdvancedCombatTracker1
             // 
             this.ucAdvancedCombatTracker1.BackColor = System.Drawing.Color.White;
-            this.ucAdvancedCombatTracker1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucAdvancedCombatTracker1.Location = new System.Drawing.Point(0, 0);
             this.ucAdvancedCombatTracker1.Name = "ucAdvancedCombatTracker1";
             this.ucAdvancedCombatTracker1.Size = new System.Drawing.Size(718, 232);
             this.ucAdvancedCombatTracker1.TabIndex = 4;
-            this.ucAdvancedCombatTracker1.Load += new System.EventHandler(this.UcAdvancedCombatTracker1_Load);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DimGray;
-            this.panel1.Location = new System.Drawing.Point(232, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 599);
-            this.panel1.TabIndex = 3;
             // 
             // ActorGUI
             // 
@@ -186,8 +181,8 @@
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.PictureBox btnClose;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnACT;
+        private System.Windows.Forms.Button btnPrerequisites;
         private System.Windows.Forms.Panel pnlSelectedMenu;
         private UCAdvancedCombatTracker ucAdvancedCombatTracker1;
         private System.Windows.Forms.TextBox txtConsole;

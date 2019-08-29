@@ -15,7 +15,7 @@ namespace ActorGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ActorGUI());
+            Application.Run(new ActorGUIForm());
         }
     }
 }

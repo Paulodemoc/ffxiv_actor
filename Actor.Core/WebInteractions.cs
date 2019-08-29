@@ -77,7 +77,7 @@ namespace Actor.Core
         /// <param name="onProgress">The action to execute every time the download progress changes (can be left null)</param>
         /// <param name="onComplete">The action to execute when the download is completed (can be left null)</param>
         /// <returns>The bundle containing the file if the result was successfull</returns>
-        public WebInteractionsBundle Download(string from, string to, Action onStart = null, Action<DownloadProgressChangedEventArgs> onProgress = null, Action onComplete = null)
+        public WebInteractionsBundle DownloadAsync(string from, string to, Action onStart = null, Action<DownloadProgressChangedEventArgs> onProgress = null, Action onComplete = null)
         {
             if (string.IsNullOrWhiteSpace(from) || !Uri.IsWellFormedUriString(from, UriKind.Absolute)) throw new ArgumentNullException(nameof(from));
             if (string.IsNullOrWhiteSpace(to)) throw new ArgumentNullException(nameof(to));
@@ -95,13 +95,11 @@ namespace Actor.Core
                 .Subscribe(x => onProgress?.Invoke(x));
             // ReSharper restore AccessToDisposedClosure
 
-            webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
-
             var downloadTask = webClient.DownloadFileTaskAsync(uriFrom, to);
-            downloadTask.Wait();
 
             // the onComplete can be invoked here as the download is synchronous.
             onComplete?.Invoke();
+
             var resultType = !downloadTask.IsCanceled && !downloadTask.IsFaulted
                 ? WebInteractionsResultType.Success
                 : WebInteractionsResultType.Fail;
@@ -112,9 +110,10 @@ namespace Actor.Core
             return new WebInteractionsBundle(resultType, new FileInfo(to));
         }
 
+
         private void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -163,7 +162,7 @@ namespace Actor.Core
             catch (Exception)
             {
                 onError?.Invoke();
-                return new Component[] {};
+                return new Component[] { };
             }
         }
 

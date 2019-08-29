@@ -199,7 +199,7 @@ namespace ActorConsole
                 downloadFrom = webInteractions.ParseAssetFromGitHub(downloadFrom, int.Parse(installArguments), () => Console.WriteLine(parsingText));
             }
 
-            var bundle = webInteractions.Download(downloadFrom, downloadToFullPath, () => Console.Write(downloadingText), args => Console.Write($"\r{downloadingText} {args.ProgressPercentage}%"), () => Console.Write("\n"));
+            var bundle = webInteractions.DownloadAsync(downloadFrom, downloadToFullPath, () => Console.Write(downloadingText), args => Console.Write($"\r{downloadingText} {args.ProgressPercentage}%"), () => Console.Write("\n"));
             if (bundle.Result == WebInteractionsResultType.Fail)
             {
                 Console.WriteLine($"\nThere was an error while downloading {component.Name}.\nThe program will be terminated!\n");

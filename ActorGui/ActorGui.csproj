@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +37,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SevenZipExtractor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SevenZipExtractor.1.0.12\lib\net45\SevenZipExtractor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -64,22 +69,28 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActorGUI.cs">
+    <Compile Include="ActorGUIForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ActorGUI.Designer.cs">
-      <DependentUpon>ActorGUI.cs</DependentUpon>
+    <Compile Include="ActorGUIForm.Designer.cs">
+      <DependentUpon>ActorGUIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCComponentInstaller.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCComponentInstaller.Designer.cs">
+      <DependentUpon>UCComponentInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCAdvancedCombatTracker.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCAdvancedCombatTracker.Designer.cs">
       <DependentUpon>UCAdvancedCombatTracker.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ActorGUI.resx">
-      <DependentUpon>ActorGUI.cs</DependentUpon>
+    <EmbeddedResource Include="ActorGUIForm.resx">
+      <DependentUpon>ActorGUIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +102,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCComponentInstaller.resx">
+      <DependentUpon>UCComponentInstaller.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCAdvancedCombatTracker.resx">
       <DependentUpon>UCAdvancedCombatTracker.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,4 +158,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SevenZipExtractor.1.0.12\build\SevenZipExtractor.targets" Condition="Exists('..\packages\SevenZipExtractor.1.0.12\build\SevenZipExtractor.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SevenZipExtractor.1.0.12\build\SevenZipExtractor.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SevenZipExtractor.1.0.12\build\SevenZipExtractor.targets'))" />
+  </Target>
 </Project>

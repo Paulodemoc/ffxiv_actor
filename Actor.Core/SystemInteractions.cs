@@ -143,7 +143,7 @@ namespace Actor.Core
             {
                 var libsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "libs");
                 var libraryFilePath = Path.Combine(libsPath, Environment.Is64BitProcess ? "x64" : "x86", "7z.dll");
-                using (var archiveFile = new ArchiveFile(from, libraryFilePath))
+                using (var archiveFile = new ArchiveFile(from))
                 {
                     archiveFile.Extract(to);
                 }

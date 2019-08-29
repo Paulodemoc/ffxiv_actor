@@ -45,18 +45,15 @@ namespace ActorGUI
             }
             else
             {
-                bool clearFolder = true;
+                bool continueInstall = true;
                 //check if folder is empty
                 if (Directory.Exists(this.installationPath) && Directory.EnumerateFiles(this.installationPath).Count() > 0)
                 {
-                    clearFolder = (MessageBox.Show("The installation folder is not empty, do you want to delete all files?", "Atention!",
+                    continueInstall = (MessageBox.Show("The installation folder is not empty, all files will be erased. Continue?", "Atention!",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes);
                 }
 
-                if (clearFolder)
-                {
-                    Directory.Delete(this.installationPath, true);
-                }
+                if (!continueInstall) return;
 
                 if (!Directory.Exists(this.installationPath))
                     Directory.CreateDirectory(this.installationPath);
@@ -64,7 +61,7 @@ namespace ActorGUI
                 var systemInteractions = new SystemInteractions();
                 var webInteractions = new WebInteractions();
                 var downloadPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "download");
-                var actComponent = ActorGUI.actComponents.First(x => x.InstallOrder == 3);
+                var actComponent = ActorGUIForm.actComponents.First(x => x.InstallOrder == 3);
 
                 InstallationHelper.Handle(webInteractions, systemInteractions, actComponent, downloadPath, this.installationPath);
 
